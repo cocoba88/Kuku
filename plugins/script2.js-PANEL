@@ -1,0 +1,117 @@
+const fs = require('fs');
+const path = require('path');
+
+let videoSendingStatus = true; // Pengiriman video diaktifkan secara default
+
+function pickRandom(list) {
+  return list[Math.floor(list.length * Math.random())];
+}
+
+function sendViralVideo(m, conn) {
+  const dbPath = path.join(__dirname, 'sent_files.json');
+  let sentFiles = [];
+
+  try {
+    // Baca file sent_files.json dan konversi isi file menjadi array
+    sentFiles = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
+  } catch (error) {
+    console.error('Error reading sent_files.json:', error.message);
+  }
+
+  // Filter video yang belum pernah dikirim
+  const remainingVideos = viral.filter((video) => !sentFiles.includes(video));
+
+  if (remainingVideos.length > 0) {
+    // Pilih video acak dari video yang belum pernah dikirim
+    const selectedVideo = pickRandom(remainingVideos);
+
+    // Tambahkan video yang akan dikirim ke dalam array sentFiles
+    sentFiles.push(selectedVideo);
+
+    try {
+      // Simpan array sentFiles ke dalam file sent_files.json
+      fs.writeFileSync(dbPath, JSON.stringify(sentFiles), 'utf8');
+    } catch (error) {
+      console.error('Error writing sent_files.json:', error.message);
+    }
+
+    m.reply('Tunggu Sebentar...');
+    conn.sendFile(m.chat, selectedVideo, 'video.mp4', 'Nih kak!', m);
+  } else {
+    m.reply('Selamat Anda JUARA 1 dalam kategori nonton BOKEP!');
+  }
+}
+
+const viral = [
+"https://telegra.ph/file/f9f3d01fead02386e5331.mp4",
+    "https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/-%20Bokep%20Indo%20Nikmatnya%20Ngewe%20Pacar%20Cantik%20di%20Kamar%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/01%20-%20DoodStream.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/01%20-%20DoodStream_2.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/09%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/10%20-%20DoodStream.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/4yu%20R4hma%20ABG%20T0ge%201%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/4yu%20R4hma%20ABG%20T0ge%202%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/4yu%20R4hma%20ABG%20T0ge%206%20-%20DoodStream.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/ACI%20HIJAB%20SMA%20-%20Vids%201%20%2849%29%20-%20DoodStream%20-%20DoodStream.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/ACI%20HIJAB%20SMA%20-%20Vids%201%20%2849%29%20-%20DoodStream%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/BESAR%20BANGET%20SAMPE%20SUSAH%20MASUK%2CSI%20ADEK%20NAHAN%20SAKIT------------%20-%20DoodStream.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Bokep%20Awcece%20Elus-elus%20Memek%20Pentilnya%20Menggoda%20-%20Awcece%20-%20Indo%2C%20Cindo%2C%20ABG%20-%20DoodStream%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Bokep%20Indo%20ABG%20Colmek%20Yang%20Lagi%20Viral%20Tiktok%20%C2%BB%20BOKEPIND%20-%20DoodStream.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Bokep%20Indo%20Full%20-%20BO%20Dapat%20Cewe%20Tobrut%20-%20DoodStream.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Byna%20Yang%20Lagi%20Rame%2C%20An4k%20Pubg%21%21%20-%20Video%20Viral%20Friday%2C%2028_07_2023.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Ceweknya%20Bilang%20Sakit%20Tapi%20Enak%20-%20DoodStream.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Cindo%20Tocil%20Cantik%20Binal%20Colmek%201%20Bokep%20Indo%20Viral%20-%20DoodStream%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Cindo%20memek%20mulus%20sempit%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Daster%20ijo%20-%20DoodStream.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Dinda%20ngew%20bareng%20kakak%20viral%20tiktok%20-%20DoodStream%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Hijab%20Hitam%20Ngentot%20Nikmat%20Di%20Hotel%20Bokep%20Ukhti%20Jilbab%20Hijab%20Viral%20-%20DoodStream.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Hijab%20Ngewe%20Yang%20Lagi%20Viral%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Hijab%20nyepong%20pacar%20sange%20-%20DoodStream%20-%20DoodStream.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Hijab%20toket%20kenyal%20mmk%20pink%20-%20DoodStream%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Inshira%20Vieta%20Amara%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/JILBAB%20SMA%20Nyepong%20Bule%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Jilbab%20hitam%20rare%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Kakak%20padet%20bulet%20live%20maen%20emek%20keluar%20putih%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/MODEL%20INDO%20MISS%20D%20BODY%20MANTAP%20-%20DoodStream%20-%20DoodStream.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/NEMENIN%20PACAR%20YANG%20LAGI%20SANGE%2C%20MALAH%20IKUT%20CROT%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Ngew%20Pembantu%20Di%20Toilet%20-%20DoodStream%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Ngewe%20bugil%20cindo%20-%20DoodStream.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/OF%20Mintra%20di%20Gubuk%20sawah%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Paksa%20Chindo%20Msbreewc%20Nyepong%20Lagi%20Gym%20Mentok%20Mual%20-%20Video%20Viral%20Friday%2C%2028_07_2023.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Princess%20Mecardo%20%288%29%20-%20DoodStream%20-%20DoodStream%20-%20DoodStream.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Princess%20Mecardo%20%289%29%20-%20DoodStream%20-%20DoodStream%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Salwa%20Hijab%20Colmek%20B%20e%20Omek%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Seleb%20tiktok%20kiky%20permata%20bokep%20indo%20viral%20%40jasverken%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/TOBRUT%20PASRAH%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Tante%20padet%20maen%20emek%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Tobrut%20s4ng3%20parah%20viral%20-%20DoodStream.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Ustadzah%20Nella%20Colmek%20Pakai%20Hijab%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/Viral%20Ciwidey%20Wanita%20Bercadar%20-%20Video%20Viral%20Friday%2C%2028_07_2023.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/_gila%20ngewe%20cindo%20mulus%20banget%20-%20-%20DoodStream.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/abg%20bandung%20toge%20gemoy%20chubby%20susu%20segar%20-%20DoodStream%20-%20DoodStream.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/aini%20aduhaymantap%20blogspot%20%281%29%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/aini%20aduhaymantap%20blogspot%20%2814%29%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/cina%20viral%202%20-%20DoodStream.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/cina%20viral%20nungging%20pamer%20boba%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/colmek%20sampe%20crot%20-%20DoodStream.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/diajarin%20tante%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/inshira%20vieta%20amara%202%20-%20DoodStream.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/jilbab%20tiktoker%20kacamata%20colok%20memek%20dan%20fyp%20%283%29%282023%2006%2006%2022%2023%2050%20789%29-merged-1686076274961%20-%20Copy-merged-1686076283627%20-%20DoodStream%20-%20DoodStream.mp4",
+"https://ia902700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/ketika%20jilbab%20tiktok%20krem%20colmek%20trik%20biar%20fyp%20part%203%20-%20DoodStream%20-%20DoodStream.mp4",
+"https://ia802700.us.archive.org/14/items/jilbab-sma-nyepong-bule-dood-stream/twitter%20%28%40manrosid%29%20bianca%20viandi%2027%20-%20DoodStream.mp4"
+  // Daftar URL video...
+];
+
+function setVideoSendingStatus(status) {
+  videoSendingStatus = status;
+}
+
+function getVideoSendingStatus() {
+  return videoSendingStatus;
+}
+
+module.exports = {
+  sendViralVideo,
+  setVideoSendingStatus,
+  getVideoSendingStatus,
+};
