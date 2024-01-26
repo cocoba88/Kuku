@@ -1,0 +1,21 @@
+import util from "util";
+import path from "path";
+
+let handler = async (m, { conn }) => {
+    const dosaRandom = dosa[Math.floor(Math.random() * dosa.length)];
+
+    conn.sendFile(m.chat, dosaRandom, "dosa.mp3", null, m, true, {
+        type: "audioMessage",
+        ptt: true,
+    });
+};
+
+handler.customPrefix = /^(.*?(anjing|asu|bajingan|bjingan|sundel|kakeane|tolol|goblok|gblok|goblk|gblk|pekok)).*$/i;
+handler.command = new RegExp();
+
+const dosa = [
+    "./vn/toxic.mp3"
+    
+];
+
+export default handler;
